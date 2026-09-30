@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet Bekbo Darbanov, a computer science student who enjoys building thoughtful things for the web.">
+  <title>Bekbo Darbanov | Student Profile</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d46d7'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='24' font-weight='bold' fill='white'%3EBD%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172138;
+      --muted: #59647a;
+      --blue: #2d46d7;
+      --line: #dce1eb;
+      --paper: #ffffff;
+      --background: #f4f6fb;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 5px;
+    }
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      padding: 10px 16px;
+      background: var(--paper);
+      z-index: 1;
+    }
+    .skip-link:focus { top: 12px; }
+    .page-header, main, .page-footer {
+      width: min(1080px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-block: 30px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      color: white;
+      background: var(--blue);
+      font-size: 0.85rem;
+    }
+    .header-link { font-size: 0.9375rem; text-underline-offset: 5px; }
+    main { padding-block: 34px 52px; }
+    .profile {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 18px 60px #17213808;
+    }
+    .identity {
+      padding: 44px;
+      color: #fff;
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .eyebrow {
+      margin: 0 0 26px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .avatar {
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      aspect-ratio: 1;
+      margin-bottom: 34px;
+      border-radius: 50%;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 3.65rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+    .role { margin: 16px 0 0; color: #e3e8ff; font-size: 1.0625rem; }
+    .year {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 6px 12px;
+      border: 1px solid #ffffff66;
+      border-radius: 100px;
+      font-size: 0.875rem;
+    }
+    .details { padding: 44px 48px; }
+    h2 { margin: 0 0 14px; font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.025em; }
+    .bio { margin: 0; color: var(--muted); font-size: 1rem; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .social-links a {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 150ms, border-color 150ms;
+    }
+    .social-links a:hover { background: #eef1ff; border-color: #a8b3ef; }
+    .contact { margin-top: 32px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .contact-intro { color: var(--muted); margin: -3px 0 20px; }
+    .form-fields { display: grid; gap: 16px; }
+    label { display: block; margin-bottom: 6px; font-size: 0.875rem; font-weight: 600; }
+    input {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 46px;
+      padding: 10px 13px;
+      border: 1px solid #cbd2e0;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+    }
+    input::placeholder { color: #727c8f; }
+    button {
+      margin-top: 20px;
+      padding: 11px 22px;
+      min-height: 46px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms;
+    }
+    button:hover { background: var(--blue); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    input:disabled { background: var(--background); }
+    .form-note { margin: 12px 0 0; color: var(--muted); font-size: 0.8125rem; }
+    .form-status { margin: 14px 0 0; font-size: 0.875rem; color: #23479b; overflow-wrap: anywhere; }
+    .form-status[data-state="error"] { color: #a1252e; }
+    .form-status:empty { display: none; }
+    .page-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+      padding-bottom: 28px;
+      color: var(--muted);
+      font-size: 0.8125rem;
+    }
+    .page-footer p { margin: 0; }
+    @media (max-width: 720px) {
+      .page-header, main, .page-footer { width: min(520px, calc(100% - 32px)); }
+      .page-header { padding-block: 20px; }
+      main { padding-block: 12px 28px; }
+      .profile { grid-template-columns: 1fr; border-radius: 20px; }
+      .identity, .details { padding: 30px; }
+      .avatar { max-width: 170px; margin-bottom: 24px; }
+      .eyebrow { margin-bottom: 20px; }
+      h1 { font-size: 2.75rem; }
+      .year { margin-top: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Semantic header: page identity and a shortcut to the contact form. -->
+  <header class="page-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">BD</span> Student profile</div>
+    <a class="header-link" href="#contact">Get in touch</a>
+  </header>
+
+  <main id="main-content">
+    <article class="profile" aria-labelledby="student-name">
+      <header class="identity">
+        <p class="eyebrow">A little about me</p>
+        <!-- Replace this embedded initials image with your own photo if desired. -->
+       <img src="1.png" alt="">
+        <!-- Sample student details: edit the name, course, year, and biography. -->
+        <h1 id="student-name">Bekbo Darbanov</h1>
+        <p class="role">Computer Science Student</p>
+        <span class="year">Second year · Class of 2028</span>
+      </header>
+
+      <div class="details">
+        <section aria-labelledby="about-heading">
+          <h2 id="about-heading">Hi, I’m Bekbo.</h2>
+          <p class="bio">I’m a computer science student learning to turn ideas into useful, accessible websites. I enjoy solving problems, exploring design, and building small projects with friends. Away from my laptop, you’ll find me reading, hiking, or discovering new music.</p>
+          <!-- These demo links lead to the platforms; replace with your profile URLs. -->
+          <nav class="social-links" aria-label="Social media">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)">LinkedIn</a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)">GitHub</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">Instagram</a>
+          </nav>
+        </section>
+
+        <section class="contact" id="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Let’s connect.</h2>
+          <p class="contact-intro">Leave your email and I’ll get back to you.</p>
+          <!-- Configure EMAILJS_CONFIG below and the email template as described in EMAILJS-SETUP.md. -->
+          <form id="contact-form" aria-describedby="form-note">
+            <div class="form-fields">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="100" required>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+              </div>
+            </div>
+            <button type="submit" disabled>Submit</button>
+            <p class="form-note" id="form-note">You’ll receive an automatic email from Bekbo after submitting.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <noscript><p class="form-note">Enable JavaScript to send this form.</p></noscript>
+          </form>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-footer">
+    <p>© 2026 Bekbo Darbanov</p>
+    <p>Learning. Creating. Growing.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (() => {
+      // Public connection settings from your EmailJS dashboard.
+      // Use the template that sends directly to {{email}}.
+      // Only a PUBLIC key belongs here; never put a password or private key in HTML.
+      const EMAILJS_CONFIG = Object.freeze({
+        publicKey: 'i5vtr9mgN9sdNJQh8',
+        serviceId: 'service_d4gkixq',
+        templateId: 'template_n23hlpa'
+      });
+
+      const form = document.querySelector('#contact-form');
+      const nameInput = document.querySelector('#name');
+      const emailInput = document.querySelector('#email');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const formNote = document.querySelector('#form-note');
+      const status = document.querySelector('#form-status');
+      const configured = Object.values(EMAILJS_CONFIG).every(value => value.trim());
+      const sdkAvailable = typeof window.emailjs?.send === 'function';
+      let sending = false;
+
+      submitButton.disabled = !configured || !sdkAvailable;
+      if (!configured) {
+        formNote.textContent = 'Email replies haven’t been enabled yet.';
+      } else if (!sdkAvailable) {
+        formNote.textContent = 'The email service could not load. Please reload the page.';
+      }
+
+      function showStatus(message, state) {
+        status.textContent = message;
+        status.dataset.state = state;
+      }
+
+      function describeSendError(error) {
+        if (Number(error?.status) === 429) {
+          return 'Please wait a moment before sending another request.';
+        }
+        const code = Number(error?.status);
+        const detail = (
+          typeof error?.text === 'string' ? error.text :
+          typeof error?.message === 'string' ? error.message : ''
+        ).trim().slice(0, 350);
+        if (code > 0) {
+          return `The email could not be sent. EmailJS ${code}: ${detail || 'The email service rejected the request.'}`;
+        }
+        if (window.location.protocol === 'file:') {
+          return 'No response from the email service. Open http://127.0.0.1:8000/ and try again.' +
+            (detail ? ` Details: ${detail}` : '');
+        }
+        return 'The email could not be sent. ' +
+          (detail || 'No response from the email service. Check your internet connection and try again.');
+      }
+
+      nameInput.addEventListener('input', () => {
+        nameInput.setCustomValidity('');
+      });
+
+      form.addEventListener('input', () => {
+        if (!sending) showStatus('', '');
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (sending) return;
+        if (!configured || !sdkAvailable) {
+          showStatus('Email replies are unavailable right now. Please try again later.', 'error');
+          return;
+        }
+
+        nameInput.value = nameInput.value.trim();
+        emailInput.value = emailInput.value.trim();
+        nameInput.setCustomValidity(nameInput.value ? '' : 'Please enter your name.');
+        if (!form.reportValidity()) return;
+
+        // Only these two fields are sent. The sender and message are fixed in EmailJS.
+        const templateParams = {
+          name: nameInput.value,
+          email: emailInput.value
+        };
+
+        sending = true;
+        submitButton.disabled = true;
+        nameInput.disabled = true;
+        emailInput.disabled = true;
+        submitButton.textContent = 'Sending…';
+        form.setAttribute('aria-busy', 'true');
+        showStatus('Sending your confirmation email…', 'pending');
+
+        try {
+          await window.emailjs.send(
+            EMAILJS_CONFIG.serviceId,
+            EMAILJS_CONFIG.templateId,
+            templateParams,
+            {
+              publicKey: EMAILJS_CONFIG.publicKey,
+              limitRate: { id: 'bekbo-profile', throttle: 10000 }
+            }
+          );
+          showStatus('Your confirmation email is on its way. Check your inbox and spam folder.', 'success');
+          form.reset();
+        } catch (error) {
+          // Use textContent via showStatus, so a service error is never interpreted as HTML.
+          // Keep the provider's status and explanation visible for troubleshooting.
+          showStatus(describeSendError(error), 'error');
+        } finally {
+          sending = false;
+          submitButton.disabled = false;
+          nameInput.disabled = false;
+          emailInput.disabled = false;
+          submitButton.textContent = 'Submit';
+          form.setAttribute('aria-busy', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
